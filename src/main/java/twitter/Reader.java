@@ -26,6 +26,7 @@ public class Reader {
      * Creates a new reader that scans input from the console and
      * separates the message into individual words/items.
      */
+    //TODO change reader to scan in entire message as string to check message length
     public Reader() {
         System.out.println("Enter the tweet to be analyzed:");
         Scanner scanner = new Scanner(System.in);
@@ -38,6 +39,7 @@ public class Reader {
      * @param scan Scanner object using the console for input
      * @return ArrayList of individual words from the message
      */
+    //TODO change stringSplitter to take in string, use method + regex to split into words
     private ArrayList<String> stringSplitter(Scanner scan) {
         while(scan.hasNext()) {
             list.add(scan.next());

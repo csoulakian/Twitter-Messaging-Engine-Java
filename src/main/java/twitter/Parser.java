@@ -1,4 +1,5 @@
 package twitter;
+import java.util.ArrayList;
 
 /**
  * Chrissy Soulakian
@@ -11,5 +12,7 @@ package twitter;
  */
 
 public class Parser {
+    public Parser(ArrayList<String> list) {
 
+    }
 }
