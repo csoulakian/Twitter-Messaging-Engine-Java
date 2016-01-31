@@ -2,6 +2,8 @@ group 'groupid'
 version '1.0'
 
 apply plugin: 'java'
+apply plugin:'application'
+mainClassName = "twitter.Main"
 
 //sourceCompatibility = 1.5
 
@@ -11,4 +13,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+run{
+    standardInput = System.in
 }
