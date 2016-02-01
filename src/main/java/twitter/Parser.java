@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public class Parser {
-    public Parser(ArrayList<String> list) {
+    public Parser(String[] list) {
 
     }
 }
