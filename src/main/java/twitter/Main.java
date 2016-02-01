@@ -1,5 +1,7 @@
 package twitter;
 
+import java.util.Arrays;
+
 /**
  * Chrissy Soulakian
  * twitter-msg-engine Project
@@ -10,7 +12,9 @@ public class Main {
 
     public static void main(String []args) {
         Reader r = new Reader();
-        System.out.print(r.list);
+        if (r.list != null) {
+            System.out.print(Arrays.toString(r.list));
+        }
     }
 
 }

@@ -1,14 +1,14 @@
 package twitter;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * Chrissy Soulakian
  * twitter-msg-engine Project
  * Created on 1/29/2016
  *
- * Reads in user input using scanner and adds each word to a list. Press Ctrl+D when finished
- * typing message in IntelliJ when running.
+ * Reads in user input using scanner and adds the message to a string. If the string is
+ * less than the max of 140 characters, it is then split into words in an array.
+ * Press Ctrl+D when finished typing message in IntelliJ when running.
  *
  * ??? 2 constructors, 1 reads in from console and other reads in
  *      text file??
@@ -17,33 +17,50 @@ import java.util.ArrayList;
 public class Reader {
 
     /**
-     * The list of "sub-strings" of the message separated into words.
+     * The original tweet.
      */
-    ArrayList<String> list = new ArrayList<String>();
+    String message = "";
+    /**
+     * The array of "sub-strings" of the message separated into words.
+     */
+    String[] list;
+    /**
+     * The maximum length of a twitter message.
+     */
+    private static final int MAX_LENGTH = 140;
 
 
     /**
      * Creates a new reader that scans input from the console and
-     * separates the message into individual words/items.
+     * adds it to a single string (message). If tweet is within required max characters, it is sent
+     * to the stringSplitter.
      */
-    //TODO change reader to scan in entire message as string to check message length
     public Reader() {
+
         System.out.println("Enter the tweet to be analyzed:");
         Scanner scanner = new Scanner(System.in);
-        stringSplitter(scanner);
+
+        while(scanner.hasNextLine()) {
+            message += scanner.nextLine();
+        }
+
         scanner.close();
+
+        if (message.length() > MAX_LENGTH) {
+            System.out.println("Your message is too long! The maximum number of characters is 140!");
+        } else {
+            stringSplitter(message);
+        }
+
     }
 
     /**
-     * Takes individual words that are scanned in and adds them to an ArrayList.
-     * @param scan Scanner object using the console for input
-     * @return ArrayList of individual words from the message
+     * Takes a message in the form of a string and creates an array of the individual words.
+     * @param message Full original tweet.
+     * @return String array of individual words from the message.
      */
-    //TODO change stringSplitter to take in string, use method + regex to split into words
-    private ArrayList<String> stringSplitter(Scanner scan) {
-        while(scan.hasNext()) {
-            list.add(scan.next());
-        }
+    private String[] stringSplitter(String message) {
+        list = message.split(" ");
         return list;
     }
 
