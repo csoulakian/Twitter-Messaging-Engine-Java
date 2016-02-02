@@ -13,7 +13,8 @@ public class Main {
     public static void main(String []args) {
         Reader r = new Reader();
         if (r.list != null) {
-            System.out.print(Arrays.toString(r.list));
+            Parser p = new Parser(r.list);
+            System.out.print(p.map);
         }
     }
 
