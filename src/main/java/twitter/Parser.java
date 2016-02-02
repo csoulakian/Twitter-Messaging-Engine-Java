@@ -47,7 +47,7 @@ public class Parser {
     /**
      * Creates a new parser that checks if each word is a mention, topic, or URL
      * (or none of those) and sorts them into a HashMap by its type and ignoring regular text.
-     * @param list
+     * @param list of words from the message in a string array
      */
     public Parser(String[] list) {
 
