@@ -46,12 +46,21 @@ public class Reader {
 
         scanner.close();
 
-        if (message.length() > MAX_LENGTH) {
-            System.out.println("Your message is too long! The maximum number of characters is 140!");
-        } else {
+        if (checkLength(message)) {
             stringSplitter(message);
+        } else {
+            System.out.println("Your message is too long! The maximum number of characters is 140!");
         }
 
+    }
+
+    /**
+     * Ensures that the message is less than or equal to the maximum of 140 characters.
+     * @param message Full original tweet.
+     * @return true if message meets character requirements, otherwise false.
+     */
+    private boolean checkLength(String message) {
+        return message.length() <= MAX_LENGTH;
     }
 
     /**
@@ -63,5 +72,6 @@ public class Reader {
         list = message.split(" ");
         return list;
     }
+
 
 }
