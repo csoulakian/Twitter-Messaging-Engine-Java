@@ -63,6 +63,7 @@ public class Parser {
      * character, and finally checks if the word begins with "www" or "http."
      * TODO Take into account other types of URLs based on end pattern
      * TODO remove 1st character (@/#) if it's a mention or topic?
+     * TODO remove special characters like .?! from end of mention
      * @param word A "sub-string" of the original message that was either at the
      *             beginning/end of the tweet or was surrounded by spaces.
      */
