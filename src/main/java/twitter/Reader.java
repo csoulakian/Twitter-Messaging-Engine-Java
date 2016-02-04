@@ -34,6 +34,7 @@ public class Reader {
      * Creates a new reader that scans input from the console and
      * adds it to a single string (message). If tweet is within required max characters, it is sent
      * to the stringSplitter.
+     * TODO pull major functionality out of constructor to allow for better testing, create msg setter?
      */
     public Reader() {
 

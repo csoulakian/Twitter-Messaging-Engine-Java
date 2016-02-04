@@ -23,9 +23,10 @@ public class ReaderTest {
     @Test
     public void basicTweets() {
         Reader reader = new Reader();
-        String input = TestFixtures.m1;
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        //String input = TestFixtures.m1;
+        //InputStream in = new ByteArrayInputStream(input.getBytes());
+        //System.setIn(in);
+        reader.message = TestFixtures.m1;
         Assert.assertArrayEquals(reader.list, TestFixtures.L1);
 
 
