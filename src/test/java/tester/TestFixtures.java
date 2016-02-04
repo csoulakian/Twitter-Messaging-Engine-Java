@@ -7,26 +7,45 @@ package tester;
  */
 public class TestFixtures {
 
-    String m0 = "";
-    String m00 = " ";
-    String m1 = "one TWO Three, this is a basic tweet!";
-    String m2 = "this tweet is way tooooooooooooooooooooooooooooooooooooooooooooo long, " +
+    //test messages
+    static String m0 = "";
+    static String m00 = " ";
+    static String m1 = "one TWO Three, this is a basic tweet!";
+    static String m2 = "this tweet is way tooooooooooooooooooooooooooooooooooooooooooooo long, " +
             "because it is way tooooooooooooooooooo many characters blah blah blah " +
             "how do we handle this long tweet?";
-    String m3 = "a ";
-    String m4 = "This is a statement. Can you handle the questions?";
-    String m5 = "Hey @John, have you heard from our friend, @Martha?";
-    String m6 = "@john";
-    String m7 = "@";
-    String m8 = "@.";
-    String m9 = "@#";
-    String m10 = "Have you been #tagged yet?";
-    String m11 = "@John believes #Google is cool.";
-    String m12 = "@Billy is #cooler than @John";
-    String m13 = "#there #are #a #lot #of #tags @here";
-    String m14 = "http://www.google.com is the best website ever!";
-    String m15 = "my #favorite website is www.google.com";
-    String m16 = "@Billy #loves www.google.com";
+    static String m3 = "a ";
+    static String m4 = "This is a statement. Can you handle the questions?";
+    static String m5 = "Hey @John, have you heard from our friend, @Martha?";
+    static String m6 = "@john";
+    static String m7 = "@";
+    static String m8 = "@.";
+    static String m9 = "@#";
+    static String m10 = "Have you been #tagged yet?";
+    static String m11 = "@John believes #Google is cool.";
+    static String m12 = "@Billy is #cooler than @John";
+    static String m13 = "#there #are #a #lot #of #tags @here";
+    static String m14 = "http://www.google.com is the best website ever!";
+    static String m15 = "my #favorite website is www.google.com";
+    static String m16 = "@Billy #loves www.google.com";
+
+    //string arrays for the messages
+    static String[] L1 = {"one", "TWO", "Three,", "this", "is", "a", "basic", "tweet!"};
+    static String[] L3 = {"a"};
+    static String[] L4 = {"This", "is", "a", "statement.", "Can", "you", "handle", "the", "questions?"};
+    static String[] L5 = {"Hey", "@John,", "have", "you", "heard", "from", "our", "friend,", "@Martha?"};
+    static String[] L6 = {"@john"};
+    static String[] L7 = {"@"};
+    static String[] L8 = {"@."};
+    static String[] L9 = {"@#"};
+    static String[] L10 = {"Have", "you", "been", "#tagged", "yet?"};
+    static String[] L11 = {"@John", "believes", "#Google", "is", "cool."};
+    static String[] L12 = {"@Billy", "is", "#cooler", "than", "@John"};
+    static String[] L13 = {"#there", "#are", "#a", "#lot", "#of", "#tags", "@here"};
+    static String[] L14 = {"http://www.google.com", "is", "the", "best", "website", "ever!"};
+    static String[] L15 = {"my", "#favorite", "website", "is", "www.google.com"};
+    static String[] L16 = {"@Billy", "#loves", "www.google.com"};
+
 
 
 }

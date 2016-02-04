@@ -19,11 +19,11 @@ public class Reader {
     /**
      * The original tweet.
      */
-    String message = "";
+    public String message = "";
     /**
      * The array of "sub-strings" of the message separated into words.
      */
-    String[] list;
+    public String[] list;
     /**
      * The maximum length of a twitter message.
      */
