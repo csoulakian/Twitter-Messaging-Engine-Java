@@ -1,5 +1,8 @@
 package tester;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Chrissy Soulakian
  * twitter-msg-engine Project
@@ -30,7 +33,10 @@ public class TestFixtures {
     static String m16 = "@Billy #loves www.google.com";
 
     //string arrays for the messages
+    static String[] L0 = {};
+    static String[] L00 = {};
     static String[] L1 = {"one", "TWO", "Three,", "this", "is", "a", "basic", "tweet!"};
+    //static String[] L2 =
     static String[] L3 = {"a"};
     static String[] L4 = {"This", "is", "a", "statement.", "Can", "you", "handle", "the", "questions?"};
     static String[] L5 = {"Hey", "@John,", "have", "you", "heard", "from", "our", "friend,", "@Martha?"};
