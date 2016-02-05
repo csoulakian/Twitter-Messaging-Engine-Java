@@ -2,6 +2,8 @@
 
 Created in IntelliJ IDEA 15.0.3
 
+Status: Project incomplete!
+
 This project was created to process Twitter-like messages that are scanned in 
 from user input from the console. A user can enter a tweet using a maximum of 140 characters.
 The message is scanned into the Reader class where it checks the length of the message and,
