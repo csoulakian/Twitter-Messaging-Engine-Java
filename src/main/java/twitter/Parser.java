@@ -63,17 +63,16 @@ public class Parser {
      * one character, then catches the # symbol at beginning followed by at least one
      * character, and finally checks if the word begins with "www" or "http."
      * TODO Take into account other types of URLs based on end pattern
-     * TODO remove 1st character (@/#) if it's a mention or topic?
-     * TODO remove special characters like .?! from end of mention
+     * TODO remove special characters like .?! from end of mention and topics
      * @param word A "sub-string" of the original message that was either at the
      *             beginning/end of the tweet or was surrounded by spaces.
      */
     private void sorter(String word) {
 
         if (word.matches("@.+")) {
-            mentionsList.add(word);
+            mentionsList.add(word.substring(1));
         } else if (word.matches("#.+")) {
-            topicsList.add(word);
+            topicsList.add(word.substring(1));
         } else if (word.matches("(www|http).+")) {
             urlsList.add(word);
         }

@@ -50,14 +50,14 @@ public class ParserTest {
         assert(p1.parsedMap.get("topics").size() == 0);
         assert(p1.parsedMap.get("urls").size() == 0);
         assert(p1.parsedMap.get("mentions").size() == 2);
-        assertTrue(p1.parsedMap.get("mentions").contains("@John,"));
-        assertTrue(p1.parsedMap.get("mentions").contains("@Martha?"));
+        assertTrue(p1.parsedMap.get("mentions").contains("John,"));
+        assertTrue(p1.parsedMap.get("mentions").contains("Martha?"));
 
         Parser p2 = new Parser(TestFixtures.L5);
         assert(p2.parsedMap.get("topics").size() == 0);
         assert(p2.parsedMap.get("urls").size() == 0);
         assert(p2.parsedMap.get("mentions").size() == 1);
-        assertTrue(p2.parsedMap.get("mentions").contains("@john"));
+        assertTrue(p2.parsedMap.get("mentions").contains("john"));
     }
 
     @Test
@@ -72,14 +72,14 @@ public class ParserTest {
         assert(p2.parsedMap.get("topics").size() == 0);
         assert(p2.parsedMap.get("urls").size() == 0);
         assert(p2.parsedMap.get("mentions").size() == 1);
-        assertTrue(p2.parsedMap.get("mentions").contains("@."));
+        assertTrue(p2.parsedMap.get("mentions").contains("."));
 
         //should be empty
         Parser p3 = new Parser(TestFixtures.L8);
         assert(p3.parsedMap.get("topics").size() == 0);
         assert(p3.parsedMap.get("urls").size() == 0);
         assert(p3.parsedMap.get("mentions").size() == 1);
-        assertTrue(p3.parsedMap.get("mentions").contains("@#"));
+        assertTrue(p3.parsedMap.get("mentions").contains("#"));
     }
 
     @Test
@@ -87,37 +87,37 @@ public class ParserTest {
         Parser p1 = new Parser(TestFixtures.L9);
         assert(p1.parsedMap.get("urls").size() == 0);
         assert(p1.parsedMap.get("mentions").size() == 1);
-        assertTrue(p1.parsedMap.get("mentions").contains("@you"));
+        assertTrue(p1.parsedMap.get("mentions").contains("you"));
         assert(p1.parsedMap.get("topics").size() == 1);
-        assertTrue(p1.parsedMap.get("topics").contains("#tagged"));
+        assertTrue(p1.parsedMap.get("topics").contains("tagged"));
 
         Parser p2 = new Parser(TestFixtures.L10);
         assert(p2.parsedMap.get("urls").size() == 0);
         assert(p2.parsedMap.get("mentions").size() == 1);
-        assertTrue(p2.parsedMap.get("mentions").contains("@John"));
+        assertTrue(p2.parsedMap.get("mentions").contains("John"));
         assert(p2.parsedMap.get("topics").size() == 2);
-        assertTrue(p2.parsedMap.get("topics").contains("#Google"));
-        assertTrue(p2.parsedMap.get("topics").contains("#cool."));
+        assertTrue(p2.parsedMap.get("topics").contains("Google"));
+        assertTrue(p2.parsedMap.get("topics").contains("cool."));
 
         Parser p3 = new Parser(TestFixtures.L11);
         assert(p3.parsedMap.get("urls").size() == 0);
         assert(p3.parsedMap.get("mentions").size() == 2);
-        assertTrue(p3.parsedMap.get("mentions").contains("@John"));
-        assertTrue(p3.parsedMap.get("mentions").contains("@Billy"));
+        assertTrue(p3.parsedMap.get("mentions").contains("John"));
+        assertTrue(p3.parsedMap.get("mentions").contains("Billy"));
         assert(p3.parsedMap.get("topics").size() == 1);
-        assertTrue(p3.parsedMap.get("topics").contains("#cooler"));
+        assertTrue(p3.parsedMap.get("topics").contains("cooler"));
 
         Parser p4 = new Parser(TestFixtures.L12);
         assert(p4.parsedMap.get("urls").size() == 0);
         assert(p4.parsedMap.get("mentions").size() == 1);
-        assertTrue(p4.parsedMap.get("mentions").contains("@here"));
+        assertTrue(p4.parsedMap.get("mentions").contains("here"));
         assert(p4.parsedMap.get("topics").size() == 6);
-        assertTrue(p4.parsedMap.get("topics").contains("#there"));
-        assertTrue(p4.parsedMap.get("topics").contains("#are"));
-        assertTrue(p4.parsedMap.get("topics").contains("#a"));
-        assertTrue(p4.parsedMap.get("topics").contains("#lot"));
-        assertTrue(p4.parsedMap.get("topics").contains("#of"));
-        assertTrue(p4.parsedMap.get("topics").contains("#tags"));
+        assertTrue(p4.parsedMap.get("topics").contains("there"));
+        assertTrue(p4.parsedMap.get("topics").contains("are"));
+        assertTrue(p4.parsedMap.get("topics").contains("a"));
+        assertTrue(p4.parsedMap.get("topics").contains("lot"));
+        assertTrue(p4.parsedMap.get("topics").contains("of"));
+        assertTrue(p4.parsedMap.get("topics").contains("tags"));
     }
 
     @Test
@@ -131,15 +131,15 @@ public class ParserTest {
         Parser p2 = new Parser(TestFixtures.L14);
         assert(p2.parsedMap.get("mentions").size() == 0);
         assert(p2.parsedMap.get("topics").size() == 1);
-        assertTrue(p2.parsedMap.get("topics").contains("#favorite"));
+        assertTrue(p2.parsedMap.get("topics").contains("favorite"));
         assert(p2.parsedMap.get("urls").size() == 1);
         assertTrue(p2.parsedMap.get("urls").contains("www.google.com"));
 
         Parser p3 = new Parser(TestFixtures.L15);
         assert(p3.parsedMap.get("mentions").size() == 1);
-        assertTrue(p3.parsedMap.get("mentions").contains("@Billy"));
+        assertTrue(p3.parsedMap.get("mentions").contains("Billy"));
         assert(p3.parsedMap.get("topics").size() == 1);
-        assertTrue(p3.parsedMap.get("topics").contains("#loves"));
+        assertTrue(p3.parsedMap.get("topics").contains("loves"));
         assert(p3.parsedMap.get("urls").size() == 1);
         assertTrue(p3.parsedMap.get("urls").contains("www.google.com"));
     }
