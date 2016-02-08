@@ -8,6 +8,8 @@ import java.util.Map;
  * Chrissy Soulakian
  * twitter-msg-engine Project
  * Created on 2/2/2016
+ *
+ * no HashMaps in TestFixtures, can't assert that two HashMaps are equal
  */
 public class TestFixtures {
 
@@ -53,14 +55,5 @@ public class TestFixtures {
     static String[] L14 = {"my", "#favorite", "website", "is", "www.google.com"};
     static String[] L15 = {"@Billy", "#loves", "www.google.com"};
 
-    //HashMaps of the messages
-
-    //initial empty parsedMap
-    static Map<String, ArrayList<String>> emptyMap = new HashMap<>();
-    static {
-        emptyMap.put("mentions", new ArrayList<>());
-        emptyMap.put("topics", new ArrayList<>());
-        emptyMap.put("urls", new ArrayList<>());
-    }
 
 }
