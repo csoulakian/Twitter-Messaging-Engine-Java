@@ -31,6 +31,16 @@ public class ParserTest {
         assert(p1.parsedMap.get("mentions").size() == 0);
         assert(p1.parsedMap.get("topics").size() == 0);
         assert(p1.parsedMap.get("urls").size() == 0);
+
+        Parser p2 = new Parser(TestFixtures.L2);
+        assert(p2.parsedMap.get("mentions").size() == 0);
+        assert(p2.parsedMap.get("topics").size() == 0);
+        assert(p2.parsedMap.get("urls").size() == 0);
+
+        Parser p3 = new Parser(TestFixtures.L3);
+        assert(p3.parsedMap.get("mentions").size() == 0);
+        assert(p3.parsedMap.get("topics").size() == 0);
+        assert(p3.parsedMap.get("urls").size() == 0);
     }
 
 
