@@ -34,6 +34,8 @@ public class TestFixtures {
     static String m13 = "http://www.google.com is the best website ever!";
     static String m14 = "my #favorite website is www.google.com";
     static String m15 = "@Billy #loves www.google.com";
+    static String m16 = "@Twitter uses t.co as a website";
+    static String m17 = "URL shortening #services bit.ly goo.gl ow.ly";
 
     //string arrays for the messages
     static String[] L0 = {};
@@ -54,6 +56,8 @@ public class TestFixtures {
     static String[] L13 = {"http://www.google.com", "is", "the", "best", "website", "ever!"};
     static String[] L14 = {"my", "#favorite", "website", "is", "www.google.com"};
     static String[] L15 = {"@Billy", "#loves", "www.google.com"};
+    static String[] L16 = {"@Twitter", "uses", "t.co", "as", "a", "website"};
+    static String[] L17 = {"URL", "shortening", "#services", "bit.ly", "goo.gl", "ow.ly"};
 
 
 }

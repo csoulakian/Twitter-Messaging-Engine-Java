@@ -17,6 +17,9 @@ import java.util.HashMap;
  * HashMap will have the string keys mentions, topics, and URLs and values will be ArrayLists
  * of strings. Go through input list and depending on what it starts with, add it to correct
  * ArrayList, then (outside of loop) put the 3 keys and all their values in parsedMap.
+ *
+ * Idea for URI verifier from
+ * http://stackoverflow.com/questions/14188350/how-do-you-test-if-string-is-in-url-format
  */
 
 public class Parser {

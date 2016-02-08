@@ -144,6 +144,25 @@ public class ParserTest {
         assertTrue(p3.parsedMap.get("urls").contains("www.google.com"));
     }
 
+    @Test
+    public void shortenedURLs() {
+        Parser p1 = new Parser(TestFixtures.L16);
+        assert(p1.parsedMap.get("topics").size() == 0);
+        assert(p1.parsedMap.get("mentions").size() == 1);
+        assertTrue(p1.parsedMap.get("mentions").contains("Twitter"));
+        assert(p1.parsedMap.get("urls").size() == 1);
+        assertTrue(p1.parsedMap.get("urls").contains("t.co"));
+
+        Parser p2 = new Parser(TestFixtures.L17);
+        assert(p2.parsedMap.get("mentions").size() == 0);
+        assert(p2.parsedMap.get("topics").size() == 1);
+        assertTrue(p2.parsedMap.get("topics").contains("services"));
+        assert(p2.parsedMap.get("urls").size() == 3);
+        assertTrue(p2.parsedMap.get("urls").contains("bit.ly"));
+        assertTrue(p2.parsedMap.get("urls").contains("goo.gl"));
+        assertTrue(p2.parsedMap.get("urls").contains("ow.ly"));
+    }
+
 }
 
 
