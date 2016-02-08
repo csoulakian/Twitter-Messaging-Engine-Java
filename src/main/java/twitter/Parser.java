@@ -74,7 +74,7 @@ public class Parser {
             mentionsList.add(word);
         } else if (word.matches("#.+")) {
             topicsList.add(word);
-        } else if (word.matches("www|http")) {
+        } else if (word.matches("(www|http).+")) {
             urlsList.add(word);
         }
 
