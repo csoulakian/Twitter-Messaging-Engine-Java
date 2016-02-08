@@ -3,7 +3,6 @@ package tester;
 import org.junit.Assert;
 import twitter.Reader;
 import org.junit.Test;
-import twitter.Reader;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -28,9 +27,6 @@ public class ReaderTest {
         //System.setIn(in);
         reader.message = TestFixtures.m1;
         Assert.assertArrayEquals(reader.list, TestFixtures.L1);
-
-
-
     }
 
 

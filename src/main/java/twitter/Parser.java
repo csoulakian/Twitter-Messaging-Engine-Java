@@ -14,7 +14,7 @@ import java.util.HashMap;
  * Parses a list of strings that represent each "word" in the original message.
  * HashMap will have the string keys mentions, topics, and URLs and values will be ArrayLists
  * of strings. Go through input list and depending on what it starts with, add it to correct
- * ArrayList, then (outside of loop) put the 3 keys and all their values in map.
+ * ArrayList, then (outside of loop) put the 3 keys and all their values in parsedMap.
  */
 
 public class Parser {
@@ -38,10 +38,10 @@ public class Parser {
     ArrayList<String> urlsList = new ArrayList<>();
 
     /**
-     * A map containing 3 keys: mentions, topics, and URLs where each key
+     * A parsedMap containing 3 keys: mentions, topics, and URLs where each key
      * is mapped to an ArrayList containing the items found in the tweet.
      */
-    public HashMap<String, ArrayList<String>> map = new HashMap<>();
+    public HashMap<String, ArrayList<String>> parsedMap = new HashMap<>();
 
 
     /**
@@ -51,8 +51,12 @@ public class Parser {
      */
     public Parser(String[] list) {
 
-        for (String word : list) {
-            sorter(word);
+        if (list.length > 0) {
+            for (String word : list) {
+                sorter(word);
+            }
+        } else {
+            parsedMap.clear();
         }
 
     }
@@ -78,10 +82,10 @@ public class Parser {
             urlsList.add(word);
         }
 
-        map.put("mentions", mentionsList);
-        map.put("topics", topicsList);
-        map.put("urls", urlsList);
+        parsedMap.put("mentions", mentionsList);
+        parsedMap.put("topics", topicsList);
+        parsedMap.put("urls", urlsList);
     }
 
-    // TODO create map getter method?
+    // TODO create parsedMap getter method?
 }

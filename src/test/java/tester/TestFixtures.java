@@ -2,6 +2,7 @@ package tester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Chrissy Soulakian
@@ -52,6 +53,14 @@ public class TestFixtures {
     static String[] L15 = {"my", "#favorite", "website", "is", "www.google.com"};
     static String[] L16 = {"@Billy", "#loves", "www.google.com"};
 
+    //HashMaps of the messages
 
+    //initial empty parsedMap
+    static Map<String, ArrayList<String>> emptyMap = new HashMap<>();
+    static {
+        emptyMap.put("mentions", new ArrayList<>());
+        emptyMap.put("topics", new ArrayList<>());
+        emptyMap.put("urls", new ArrayList<>());
+    }
 
 }

@@ -21,9 +21,10 @@ public class Reader {
      */
     public String message = "";
     /**
-     * The array of "sub-strings" of the message separated into words.
+     * The array of "sub-strings" of the message separated into words. Initialized to an
+     * empty array so a message that's too long will still have an empty list.
      */
-    public String[] list;
+    public String[] list = {};
     /**
      * The maximum length of a twitter message.
      */
@@ -47,11 +48,12 @@ public class Reader {
 
         scanner.close();
 
+        //splits message string if message is not empty and <= max length
         if (checkLength(message)) {
-            stringSplitter(message);
-        } else {
-            System.out.println("Your message is too long! The maximum number of characters is 140!");
-        }
+            if (message.length() > 0) {
+                stringSplitter(message);
+            } else System.out.println("Your message is empty!");
+        } else System.out.println("Your message is too long! The maximum number of characters is 140!");
 
     }
 
