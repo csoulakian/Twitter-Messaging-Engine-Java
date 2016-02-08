@@ -1,4 +1,6 @@
 package twitter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,10 +37,31 @@ public class Parser {
     private ArrayList<String> urlsList = new ArrayList<>();
 
     /**
+     * regex to match in sorter method for mentions. begins with @ symbol and followed
+     * by one or more of any character.
+     */
+    private static String regMentions = "@.+";
+
+    /**
+     * regex to match in sorter method for topics. begins with # symbol and followed
+     * by one or more of any character.
+     */
+    private static String regTopics = "#.+";
+
+    /**
+     * regex to match in sorter method for URLs. starts with at least one character, followed by
+     * at least one dot, followed by at least one character. matches words that contain at least one
+     * dot somewhere in the word but not at the beginning or end. additional check of verifying
+     * the URL is completed after matched to regex.
+     */
+    private static String regURLs = ".+\\..+";
+
+    /**
      * A parsedMap containing 3 keys: mentions, topics, and URLs where each key
      * is mapped to an ArrayList containing the items found in the tweet.
      */
     public HashMap<String, ArrayList<String>> parsedMap = new HashMap<>();
+
 
 
     /**
@@ -61,25 +84,40 @@ public class Parser {
     /**
      * Sorts a word by first catching @ symbol at beginning followed by at least
      * one character, then catches the # symbol at beginning followed by at least one
-     * character, and finally checks if the word begins with "www" or "http."
-     * TODO Take into account other types of URLs based on end pattern
+     * character, and finally checks if the word contains at least one dot in the word
+     * which is not at the beginning or end. If it does, and the URI is verified,
+     * then it is added to the URLs list.
      * TODO remove special characters like .?! from end of mention and topics
      * @param word A "sub-string" of the original message that was either at the
      *             beginning/end of the tweet or was surrounded by spaces.
      */
     private void sorter(String word) {
-
-        if (word.matches("@.+")) {
+        if (word.matches(regMentions)) {
             mentionsList.add(word.substring(1));
-        } else if (word.matches("#.+")) {
+        } else if (word.matches(regTopics)) {
             topicsList.add(word.substring(1));
-        } else if (word.matches("(www|http).+")) {
+        } else if (word.matches(regURLs) && verifyURL(word)) {
             urlsList.add(word);
         }
 
         parsedMap.put("mentions", mentionsList);
         parsedMap.put("topics", topicsList);
         parsedMap.put("urls", urlsList);
+    }
+
+    /**
+     * Checks if a word that doesn't start with @ or # and has a dot
+     * somewhere in the middle of the word is a valid URL.
+     * @param url input string that is a potentially valid URL
+     * @return true if the URL is valid, otherwise false
+     */
+    private boolean verifyURL(String url) {
+        try {
+            new URI(url);
+            return true;
+        } catch (URISyntaxException e) {
+            return false;
+        }
     }
 
     // TODO create parsedMap getter method?
