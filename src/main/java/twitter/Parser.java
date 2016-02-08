@@ -41,9 +41,10 @@ public class Parser {
 
     /**
      * regex to match in sorter method for mentions. begins with @ symbol and followed
-     * by one or more of any character.
+     * by 1-14 letters, numbers, or underscores. the word can optionally end in 0 or 1
+     * of any character to allow for ending punctuation.
      */
-    private static String regMentions = "@.+";
+    private static String regMentions = "^@[A-Za-z0-9_]{1,14}.?$";
 
     /**
      * regex to match in sorter method for topics. begins with # symbol and followed
@@ -86,7 +87,9 @@ public class Parser {
 
     /**
      * Sorts a word by first catching @ symbol at beginning followed by at least
-     * one character, then catches the # symbol at beginning followed by at least one
+     * one letter/number. All special characters are removed from the string before it
+     * is added to the mentionsList.
+     * Then sorter catches the # symbol at beginning followed by at least one
      * character, and finally checks if the word contains at least one dot in the word
      * which is not at the beginning or end. If it does, and the URI is verified,
      * then it is added to the URLs list.
@@ -96,7 +99,8 @@ public class Parser {
      */
     private void sorter(String word) {
         if (word.matches(regMentions)) {
-            mentionsList.add(word.substring(1));
+            word = word.replaceAll("[^A-Za-z0-9_]", "");
+            mentionsList.add(word);
         } else if (word.matches(regTopics)) {
             topicsList.add(word.substring(1));
         } else if (word.matches(regURLs) && verifyURL(word)) {

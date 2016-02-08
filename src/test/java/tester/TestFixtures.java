@@ -19,7 +19,7 @@ public class TestFixtures {
     static String m000 = "this tweet is way tooooooooooooooooooooooooooooooooooooooooooooo long, " +
             "because it is way tooooooooooooooooooo many characters blah blah blah " +
             "how do we handle this long tweet?";
-    static String m1 = "one TWO Three, this is a basic tweet!";
+    static String m1 = "one TWO Three this is a basic tweet";
     static String m2 = "a ";
     static String m3 = "This is a statement. Can you handle the questions?";
     static String m4 = "Hey @John, have you heard from our friend, @Martha?";
@@ -41,10 +41,10 @@ public class TestFixtures {
     static String[] L0 = {};
     static String[] L00 = {};
     static String[] L000 = {};
-    static String[] L1 = {"one", "TWO", "Three,", "this", "is", "a", "basic", "tweet!"};
+    static String[] L1 = {"one", "TWO", "Three", "this", "is", "a", "basic", "tweet"};
     static String[] L2 = {"a"};
     static String[] L3 = {"This", "is", "a", "statement.", "Can", "you", "handle", "the", "questions?"};
-    static String[] L4 = {"Hey", "@John,", "have", "you", "heard", "from", "our", "friend,", "@Martha?"};
+    static String[] L4 = {"Hey", "@John", "have", "you", "heard", "from", "our", "friend,", "@Martha"};
     static String[] L5 = {"@john"};
     static String[] L6 = {"@"};
     static String[] L7 = {"@."};
