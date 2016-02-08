@@ -21,21 +21,18 @@ public class Parser {
 
     /**
      * An ArrayList containing all the users that were mentioned in the tweet.
-     * TODO Make private after testing in Main.
      */
-    ArrayList<String> mentionsList = new ArrayList<>();
+    private ArrayList<String> mentionsList = new ArrayList<>();
 
     /**
      * An ArrayList containing all the topics that were tagged in the tweet.
-     * TODO Make private after testing in Main.
      */
-    ArrayList<String> topicsList = new ArrayList<>();
+    private ArrayList<String> topicsList = new ArrayList<>();
 
     /**
      * An ArrayList containing all the urls that were linked in the tweet.
-     * TODO Make private after testing in Main.
      */
-    ArrayList<String> urlsList = new ArrayList<>();
+    private ArrayList<String> urlsList = new ArrayList<>();
 
     /**
      * A parsedMap containing 3 keys: mentions, topics, and URLs where each key
@@ -73,7 +70,6 @@ public class Parser {
      */
     private void sorter(String word) {
 
-        // TODO find better way to write nested else if
         if (word.matches("@.+")) {
             mentionsList.add(word);
         } else if (word.matches("#.+")) {

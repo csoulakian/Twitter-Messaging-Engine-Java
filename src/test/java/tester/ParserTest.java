@@ -60,6 +60,28 @@ public class ParserTest {
         assertTrue(p2.parsedMap.get("mentions").contains("@john"));
     }
 
+    @Test
+    public void emptyMentions() {
+        Parser p1 = new Parser(TestFixtures.L6);
+        assert(p1.parsedMap.get("mentions").size() == 0);
+        assert(p1.parsedMap.get("topics").size() == 0);
+        assert(p1.parsedMap.get("urls").size() == 0);
+
+        //TODO should be empty
+        Parser p2 = new Parser(TestFixtures.L7);
+        assert(p2.parsedMap.get("topics").size() == 0);
+        assert(p2.parsedMap.get("urls").size() == 0);
+        assert(p2.parsedMap.get("mentions").size() == 1);
+        assertTrue(p2.parsedMap.get("mentions").contains("@."));
+
+        //should be empty
+        Parser p3 = new Parser(TestFixtures.L8);
+        assert(p3.parsedMap.get("topics").size() == 0);
+        assert(p3.parsedMap.get("urls").size() == 0);
+        assert(p3.parsedMap.get("mentions").size() == 1);
+        assertTrue(p3.parsedMap.get("mentions").contains("@#"));
+    }
+
 
 }
 
