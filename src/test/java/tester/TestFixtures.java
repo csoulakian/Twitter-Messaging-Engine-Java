@@ -27,8 +27,8 @@ public class TestFixtures {
     static String m6 = "@";
     static String m7 = "@.";
     static String m8 = "@#";
-    static String m9 = "Have you been #tagged yet?";
-    static String m10 = "@John believes #Google is cool.";
+    static String m9 = "Have @you been #tagged yet?";
+    static String m10 = "@John believes #Google is #cool.";
     static String m11 = "@Billy is #cooler than @John";
     static String m12 = "#there #are #a #lot #of #tags @here";
     static String m13 = "http://www.google.com is the best website ever!";
@@ -47,8 +47,8 @@ public class TestFixtures {
     static String[] L6 = {"@"};
     static String[] L7 = {"@."};
     static String[] L8 = {"@#"};
-    static String[] L9 = {"Have", "you", "been", "#tagged", "yet?"};
-    static String[] L10 = {"@John", "believes", "#Google", "is", "cool."};
+    static String[] L9 = {"Have", "@you", "been", "#tagged", "yet?"};
+    static String[] L10 = {"@John", "believes", "#Google", "is", "#cool."};
     static String[] L11 = {"@Billy", "is", "#cooler", "than", "@John"};
     static String[] L12 = {"#there", "#are", "#a", "#lot", "#of", "#tags", "@here"};
     static String[] L13 = {"http://www.google.com", "is", "the", "best", "website", "ever!"};
