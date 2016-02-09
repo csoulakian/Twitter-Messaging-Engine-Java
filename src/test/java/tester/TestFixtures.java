@@ -58,6 +58,6 @@ public class TestFixtures {
     static String[] L15 = {"@Billy", "#loves", "www.google.com"};
     static String[] L16 = {"@Twitter", "uses", "t.co", "as", "a", "website"};
     static String[] L17 = {"URL", "shortening", "#services", "bit.ly", "goo.gl", "ow.ly"};
-
+    //TODO add test cases for early shortening of tags and invalid mentions
 
 }
