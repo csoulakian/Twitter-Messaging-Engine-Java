@@ -44,7 +44,7 @@ public class TestFixtures {
     static String[] L1 = {"one", "TWO", "Three", "this", "is", "a", "basic", "tweet"};
     static String[] L2 = {"a"};
     static String[] L3 = {"This", "is", "a", "statement.", "Can", "you", "handle", "the", "questions?"};
-    static String[] L4 = {"Hey", "@John", "have", "you", "heard", "from", "our", "friend,", "@Martha"};
+    static String[] L4 = {"Hey", "@John,", "have", "you", "heard", "from", "our", "friend,", "@Martha?"};
     static String[] L5 = {"@john"};
     static String[] L6 = {"@"};
     static String[] L7 = {"@."};

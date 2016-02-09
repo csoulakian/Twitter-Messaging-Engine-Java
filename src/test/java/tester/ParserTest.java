@@ -103,7 +103,7 @@ public class ParserTest {
         assertTrue(p2.parsedMap.get("mentions").contains("John"));
         assert(p2.parsedMap.get("topics").size() == 2);
         assertTrue(p2.parsedMap.get("topics").contains("Google"));
-        assertTrue(p2.parsedMap.get("topics").contains("cool."));
+        assertTrue(p2.parsedMap.get("topics").contains("cool"));
 
         //2 mentions + 1 topic
         Parser p3 = new Parser(TestFixtures.L11);

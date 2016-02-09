@@ -48,9 +48,10 @@ public class Parser {
 
     /**
      * regex to match in sorter method for topics. begins with # symbol and followed
-     * by one or more of any character.
+     * by one or more letters, numbers, or underscores. It could be followed by 0 or
+     * more of any character to allow for ending punctuation.
      */
-    private static String regTopics = "#.+";
+    private static String regTopics = "#[A-Za-z0-9_]+.*";
 
     /**
      * regex to match in sorter method for URLs. starts with at least one character, followed by
@@ -86,14 +87,16 @@ public class Parser {
     }
 
     /**
-     * Sorts a word by first catching @ symbol at beginning followed by at least
-     * one letter/number. All special characters are removed from the string before it
+     * Sorts a word by first catching if it matches the regex in regMentions.
+     * All special characters are then removed from the string before it
      * is added to the mentionsList.
-     * Then sorter catches the # symbol at beginning followed by at least one
-     * character, and finally checks if the word contains at least one dot in the word
-     * which is not at the beginning or end. If it does, and the URI is verified,
+     * Then sorter catches if the word matches the regex in regTopics.
+     * If it does, then the initial # symbol is removed and the topic stops
+     * prematurely where the first special character occurs (not letter/number/underscore).
+     * The final topic is added to the topicsList.
+     * Last, the sorter checks if the word contains at least one dot which is not at
+     * the beginning or end. If it does, and the URI is verified,
      * then it is added to the URLs list.
-     * TODO remove special characters like .?! from end of mention and topics
      * @param word A "sub-string" of the original message that was either at the
      *             beginning/end of the tweet or was surrounded by spaces.
      */
@@ -102,7 +105,8 @@ public class Parser {
             word = word.replaceAll("[^A-Za-z0-9_]", "");
             mentionsList.add(word);
         } else if (word.matches(regTopics)) {
-            topicsList.add(word.substring(1));
+            word = word.substring(1).replaceFirst("[^A-Za-z0-9_].*", "");
+            topicsList.add(word);
         } else if (word.matches(regURLs) && verifyURL(word)) {
             urlsList.add(word);
         }
