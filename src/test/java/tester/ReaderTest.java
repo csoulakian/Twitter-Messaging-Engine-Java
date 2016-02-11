@@ -17,6 +17,24 @@ import java.util.Objects;
 public class ReaderTest {
 
     @Test
+    public void emptyRead() {
+        //empty message
+        Reader r1 = new Reader(TestFixtures.m0);
+        assert(r1.message.equals(TestFixtures.m0));
+        Assert.assertArrayEquals(r1.list, TestFixtures.L0);
+
+        //message with only a space
+        Reader r2 = new Reader(TestFixtures.m00);
+        assert(r2.message.equals(TestFixtures.m00));
+        Assert.assertArrayEquals(r2.list, TestFixtures.L00);
+
+        //message is too long
+        Reader r3 = new Reader(TestFixtures.m000);
+        assert(r3.message.equals(TestFixtures.m000));
+        Assert.assertArrayEquals(r3.list, TestFixtures.L000);
+    }
+
+    @Test
     public void basicRead() {
         //basic message with no mentions/topics/URLs or punctuation
         Reader r1 = new Reader(TestFixtures.m1);
