@@ -1,7 +1,7 @@
 package tester;
 
 import org.junit.Test;
-import twitter.Parser;
+import twitter.*;
 import static org.junit.Assert.*;
 
 /**
@@ -130,20 +130,21 @@ public class ParserTest {
 
     @Test
     public void basicURLs() {
-        //URL with http
+        //URL with http + URL with www
         Parser p1 = new Parser(TestFixtures.L13);
         assert(p1.parsedMap.get("mentions").size() == 0);
         assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("urls").size() == 1);
+        assert(p1.parsedMap.get("urls").size() == 2);
         assertTrue(p1.parsedMap.get("urls").contains("http://www.google.com"));
+        assertTrue(p1.parsedMap.get("urls").contains("www.google.com"));
 
-        //URL with www
+        //1 topic + bad URL
         Parser p2 = new Parser(TestFixtures.L14);
         assert(p2.parsedMap.get("mentions").size() == 0);
+        //TODO fix URL with correct syntax, but website doesn't exist
+        //assert(p2.parsedMap.get("urls").size() == 0);
         assert(p2.parsedMap.get("topics").size() == 1);
         assertTrue(p2.parsedMap.get("topics").contains("favorite"));
-        assert(p2.parsedMap.get("urls").size() == 1);
-        assertTrue(p2.parsedMap.get("urls").contains("www.google.com"));
 
         //1 mention + 1 topic + 1 URL
         Parser p3 = new Parser(TestFixtures.L15);
@@ -197,7 +198,6 @@ public class ParserTest {
         //URL + invalid mention + shortened tag
         Parser p3 = new Parser(TestFixtures.L20);
         assert(p3.parsedMap.get("mentions").size() == 0);
-        System.out.print(p3.parsedMap.get("urls"));
         assert(p3.parsedMap.get("urls").size() == 1);
         assertTrue(p3.parsedMap.get("urls").contains("google.com"));
         assert(p3.parsedMap.get("topics").size() == 1);

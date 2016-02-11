@@ -1,7 +1,7 @@
 package tester;
 
 import org.junit.Assert;
-import twitter.Reader;
+import twitter.*;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -108,12 +108,12 @@ public class ReaderTest {
 
     @Test
     public void basicURLs() {
-        //URL with http
+        //URL with http + URL with www
         Reader r1 = new Reader(TestFixtures.m13);
         assert(r1.message.equals(TestFixtures.m13));
         Assert.assertArrayEquals(r1.list, TestFixtures.L13);
 
-        //URL with www
+        //1 topic + bad URL
         Reader r2 = new Reader(TestFixtures.m14);
         assert(r2.message.equals(TestFixtures.m14));
         Assert.assertArrayEquals(r2.list, TestFixtures.L14);

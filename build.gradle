@@ -3,7 +3,7 @@ version '1.0'
 
 apply plugin: 'java'
 apply plugin:'application'
-mainClassName = "twitter.Main"
+mainClassName = "tester.TestRunner"
 
 //sourceCompatibility = 1.5
 
