@@ -1,17 +1,13 @@
 package twitter;
-import java.util.Scanner;
 
 /**
  * Chrissy Soulakian
  * twitter-msg-engine Project
  * Created on 1/29/2016
  *
- * Reads in user input using scanner and adds the message to a string. If the string is
+ * Reads an input parameter string message. If the string is
  * less than the max of 140 characters, it is then split into words in an array.
- * Press Ctrl+D when finished typing message in IntelliJ when running.
  *
- * ??? 2 constructors, 1 reads in from console and other reads in
- *      text file??
  */
 
 public class Reader {
@@ -19,7 +15,7 @@ public class Reader {
     /**
      * The original tweet.
      */
-    public String message = "";
+    public String message;
     /**
      * The array of "sub-strings" of the message separated into words. Initialized to an
      * empty array so a message that's too long will still have an empty list.
@@ -32,21 +28,10 @@ public class Reader {
 
 
     /**
-     * Creates a new reader that scans input from the console and
-     * adds it to a single string (message). If tweet is within required max characters, it is sent
-     * to the stringSplitter.
-     * TODO pull major functionality out of constructor to allow for better testing, create msg setter?
+     * Creates a new reader using a message string. If tweet is within required
+     * max characters, it is sent to the stringSplitter.
      */
-    public Reader() {
-
-        System.out.println("Enter the tweet to be analyzed:");
-        Scanner scanner = new Scanner(System.in);
-
-        while(scanner.hasNextLine()) {
-            message += scanner.nextLine();
-        }
-
-        scanner.close();
+    public Reader(String message) {
 
         //splits message string if message is not empty and <= max length
         if (checkLength(message)) {
@@ -75,6 +60,5 @@ public class Reader {
         list = message.split(" ");
         return list;
     }
-
 
 }
