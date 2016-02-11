@@ -31,8 +31,9 @@ public class Reader {
      * Creates a new reader using a message string. If tweet is within required
      * max characters, it is sent to the stringSplitter.
      */
-    public Reader(String message) {
+    public Reader(String tweet) {
 
+        message = tweet;
         //splits message string if message is not empty and <= max length
         if (checkLength(message)) {
             if (message.length() > 0) {
