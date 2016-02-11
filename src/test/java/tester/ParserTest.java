@@ -176,6 +176,34 @@ public class ParserTest {
         assertTrue(p2.parsedMap.get("urls").contains("ow.ly"));
     }
 
+    @Test
+    public void badTagsMentions() {
+        //2 shortened tags + 1 mention
+        Parser p1 = new Parser(TestFixtures.L18);
+        assert(p1.parsedMap.get("urls").size() == 0);
+        assert(p1.parsedMap.get("mentions").size() == 1);
+        assertTrue(p1.parsedMap.get("mentions").contains("Billy"));
+        assert(p1.parsedMap.get("topics").size() == 2);
+        assertTrue(p1.parsedMap.get("topics").contains("this"));
+        assertTrue(p1.parsedMap.get("topics").contains("so"));
+
+        //long tag + invalid mention
+        Parser p2 = new Parser(TestFixtures.L19);
+        assert(p2.parsedMap.get("urls").size() == 0);
+        assert(p2.parsedMap.get("mentions").size() == 0);
+        assert(p2.parsedMap.get("topics").size() == 1);
+        assertTrue(p2.parsedMap.get("topics").contains("thatawkwardmomentwhen"));
+
+        //URL + invalid mention + shortened tag
+        Parser p3 = new Parser(TestFixtures.L20);
+        assert(p3.parsedMap.get("mentions").size() == 0);
+        System.out.print(p3.parsedMap.get("urls"));
+        assert(p3.parsedMap.get("urls").size() == 1);
+        assertTrue(p3.parsedMap.get("urls").contains("google.com"));
+        assert(p3.parsedMap.get("topics").size() == 1);
+        assertTrue(p3.parsedMap.get("topics").contains("google"));
+    }
+
 }
 
 

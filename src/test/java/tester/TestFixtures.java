@@ -36,6 +36,9 @@ public class TestFixtures {
     static String m15 = "@Billy #loves www.google.com";
     static String m16 = "@Twitter uses t.co as a website";
     static String m17 = "URL shortening #services bit.ly goo.gl ow.ly";
+    static String m18 = "#this.project was #so..fun, @Billy";
+    static String m19 = "#thatawkwardmomentwhen your @lastnameistoolong";
+    static String m20 = "google.com @google.com #google.com";
 
     //string arrays for the messages
     static String[] L0 = {};
@@ -58,6 +61,8 @@ public class TestFixtures {
     static String[] L15 = {"@Billy", "#loves", "www.google.com"};
     static String[] L16 = {"@Twitter", "uses", "t.co", "as", "a", "website"};
     static String[] L17 = {"URL", "shortening", "#services", "bit.ly", "goo.gl", "ow.ly"};
-    //TODO add test cases for early shortening of tags and invalid mentions
+    static String[] L18 = {"#this.project", "was", "#so..fun,", "@Billy"};
+    static String[] L19 = {"#thatawkwardmomentwhen", "your", "@lastnameistoolong"};
+    static String[] L20 = {"google.com", "@google.com", "#google.com"};
 
 }

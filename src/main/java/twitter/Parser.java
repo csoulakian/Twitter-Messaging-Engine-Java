@@ -87,7 +87,8 @@ public class Parser {
     }
 
     /**
-     * Sorts a word by first catching if it matches the regex in regMentions.
+     * Sorts a word by first catching if it starts with @ and then
+     * if it matches the regex in regMentions.
      * All special characters are then removed from the string before it
      * is added to the mentionsList.
      * Then sorter catches if the word matches the regex in regTopics.
@@ -101,9 +102,11 @@ public class Parser {
      *             beginning/end of the tweet or was surrounded by spaces.
      */
     private void sorter(String word) {
-        if (word.matches(regMentions)) {
-            word = word.replaceAll("[^A-Za-z0-9_]", "");
-            mentionsList.add(word);
+        if (word.startsWith("@")) {
+            if (word.matches(regMentions)) {
+                word = word.replaceAll("[^A-Za-z0-9_]", "");
+                mentionsList.add(word);
+            }
         } else if (word.matches(regTopics)) {
             word = word.substring(1).replaceFirst("[^A-Za-z0-9_].*", "");
             topicsList.add(word);
