@@ -34,6 +34,22 @@ and the URLs array list.
 The functionality of the program can be seen in the ReaderTest, which makes sure the original string is
 correctly separated into words, and the ParserTest, which makes sure the parsed HashMap sorts the words correctly.
 
+## To run using Java ##
+
+Navigate to:
+    
+    twitter-msg-engine/src/main/java
+
+Compile:
+    
+    javac -d "../../../build/classes/main" twitter/*.java
+    
+Run:
+    
+    java -classpath "../../../build/classes/main" twitter.Main
+
+press Ctrl+D to end scanner input
+
 ## Testing ##
 
 Navigate to:
@@ -44,5 +60,5 @@ Run:
 
     gradle test
 
-JUnit tests main method is found in src/test/java/tester/TestRunner
+JUnit tests are found in src/test/java/tester/SuiteTest
 
