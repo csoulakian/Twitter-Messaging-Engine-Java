@@ -2,7 +2,7 @@
 
 Created in IntelliJ IDEA 15.0.3
 
-Status: Project incomplete!
+Status: Looking pretty good! Always room for improvement though!
 
 This project was created to process sample Twitter-like messages that are strings with a maximum of 140 characters.
 
