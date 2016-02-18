@@ -26,7 +26,6 @@ public class Reader {
      */
     private static final int MAX_LENGTH = 140;
 
-
     /**
      * Creates a new reader using a message string. If tweet is within required
      * max characters, it is sent to the stringSplitter.

@@ -1,9 +1,5 @@
 package tester;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Chrissy Soulakian
  * twitter-msg-engine Project

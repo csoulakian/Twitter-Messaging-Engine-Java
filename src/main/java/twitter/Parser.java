@@ -67,8 +67,6 @@ public class Parser {
      */
     public HashMap<String, ArrayList<String>> parsedMap = new HashMap<>();
 
-
-
     /**
      * Creates a new parser that checks if each word is a mention, topic, or URL
      * (or none of those) and sorts them into a HashMap by its type and ignoring regular text.
