@@ -19,139 +19,184 @@ public class ReaderTest {
     @Test
     public void emptyRead() {
         //empty message
-        Reader r1 = new Reader(TestFixtures.m0);
-        assert(r1.message.equals(TestFixtures.m0));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L0);
+        Reader r = new Reader(TestFixtures.m0);
+        assert (r.message.equals(TestFixtures.m0));
+        Assert.assertArrayEquals(r.list, TestFixtures.L0);
+    }
 
+    @Test
+    public void emptySpaceRead() {
         //message with only a space
-        Reader r2 = new Reader(TestFixtures.m00);
-        assert(r2.message.equals(TestFixtures.m00));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L00);
+        Reader r = new Reader(TestFixtures.m00);
+        assert (r.message.equals(TestFixtures.m00));
+        Assert.assertArrayEquals(r.list, TestFixtures.L00);
+    }
 
+    @Test
+    public void tooLongRead() {
         //message is too long
-        Reader r3 = new Reader(TestFixtures.m000);
-        assert(r3.message.equals(TestFixtures.m000));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L000);
+        Reader r = new Reader(TestFixtures.m000);
+        assert(r.message.equals(TestFixtures.m000));
+        Assert.assertArrayEquals(r.list, TestFixtures.L000);
     }
 
     @Test
     public void basicRead() {
         //basic message with no mentions/topics/URLs or punctuation
-        Reader r1 = new Reader(TestFixtures.m1);
-        assert(r1.message.equals(TestFixtures.m1));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L1);
+        Reader r = new Reader(TestFixtures.m1);
+        assert (r.message.equals(TestFixtures.m1));
+        Assert.assertArrayEquals(r.list, TestFixtures.L1);
+    }
 
+    @Test
+    public void oneLetterBasicRead() {
         //basic message one letter
-        Reader r2 = new Reader(TestFixtures.m2);
-        assert(r2.message.equals(TestFixtures.m2));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L2);
+        Reader r = new Reader(TestFixtures.m2);
+        assert (r.message.equals(TestFixtures.m2));
+        Assert.assertArrayEquals(r.list, TestFixtures.L2);
+    }
 
+    @Test
+    public void basicPunctuationRead() {
         //basic message with no mentions/topics/URLs with punctuation
-        Reader r3 = new Reader(TestFixtures.m3);
-        assert(r3.message.equals(TestFixtures.m3));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L3);
+        Reader r = new Reader(TestFixtures.m3);
+        assert(r.message.equals(TestFixtures.m3));
+        Assert.assertArrayEquals(r.list, TestFixtures.L3);
     }
 
     @Test
-    public void basicMentions() {
+    public void twoBasicMentions() {
         //message contains 2 mentions with punctuation
-        Reader r1 = new Reader(TestFixtures.m4);
-        assert(r1.message.equals(TestFixtures.m4));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L4);
-
-        //message only contains mention
-        Reader r2 = new Reader(TestFixtures.m5);
-        assert(r2.message.equals(TestFixtures.m5));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L5);
+        Reader r = new Reader(TestFixtures.m4);
+        assert (r.message.equals(TestFixtures.m4));
+        Assert.assertArrayEquals(r.list, TestFixtures.L4);
     }
 
     @Test
-    public void emptyMentions() {
+    public void oneBasicMention() {
+        //message only contains one mention
+        Reader r = new Reader(TestFixtures.m5);
+        assert(r.message.equals(TestFixtures.m5));
+        Assert.assertArrayEquals(r.list, TestFixtures.L5);
+    }
+
+    @Test
+    public void emptyMention() {
         //message is only @ symbol
-        Reader r1 = new Reader(TestFixtures.m6);
-        assert(r1.message.equals(TestFixtures.m6));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L6);
+        Reader r = new Reader(TestFixtures.m6);
+        assert (r.message.equals(TestFixtures.m6));
+        Assert.assertArrayEquals(r.list, TestFixtures.L6);
+    }
 
+    @Test
+    public void mentionDot() {
         //message is @ symbol followed by dot
-        Reader r2 = new Reader(TestFixtures.m7);
-        assert(r2.message.equals(TestFixtures.m7));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L7);
+        Reader r = new Reader(TestFixtures.m7);
+        assert (r.message.equals(TestFixtures.m7));
+        Assert.assertArrayEquals(r.list, TestFixtures.L7);
+    }
 
+    @Test
+    public void mentionTopicSymbols() {
         //message is @ symbol followed by # symbol
-        Reader r3 = new Reader(TestFixtures.m8);
-        assert(r3.message.equals(TestFixtures.m8));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L8);
+        Reader r = new Reader(TestFixtures.m8);
+        assert(r.message.equals(TestFixtures.m8));
+        Assert.assertArrayEquals(r.list, TestFixtures.L8);
     }
 
     @Test
-    public void mentionsTopicsCombo() {
+    public void oneMentionOneTopic() {
         //1 mention + 1 topic with punctuation
-        Reader r1 = new Reader(TestFixtures.m9);
-        assert(r1.message.equals(TestFixtures.m9));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L9);
+        Reader r = new Reader(TestFixtures.m9);
+        assert (r.message.equals(TestFixtures.m9));
+        Assert.assertArrayEquals(r.list, TestFixtures.L9);
+    }
 
+    @Test
+    public void oneMentionTwoTopics() {
         //1 mention + 2 topics with punctuation
-        Reader r2 = new Reader(TestFixtures.m10);
-        assert(r2.message.equals(TestFixtures.m10));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L10);
+        Reader r = new Reader(TestFixtures.m10);
+        assert (r.message.equals(TestFixtures.m10));
+        Assert.assertArrayEquals(r.list, TestFixtures.L10);
+    }
 
+    @Test
+    public void twoMentionsOneTopic() {
         //2 mentions + 1 topic
-        Reader r3 = new Reader(TestFixtures.m11);
-        assert(r3.message.equals(TestFixtures.m11));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L11);
+        Reader r = new Reader(TestFixtures.m11);
+        assert (r.message.equals(TestFixtures.m11));
+        Assert.assertArrayEquals(r.list, TestFixtures.L11);
+    }
 
+    @Test
+    public void oneMentionManyTopics() {
         //1 mention + 6 topics
-        Reader r4 = new Reader(TestFixtures.m12);
-        assert(r4.message.equals(TestFixtures.m12));
-        Assert.assertArrayEquals(r4.list, TestFixtures.L12);
+        Reader r = new Reader(TestFixtures.m12);
+        assert(r.message.equals(TestFixtures.m12));
+        Assert.assertArrayEquals(r.list, TestFixtures.L12);
     }
 
     @Test
-    public void basicURLs() {
+    public void basicHttpWwwURLs() {
         //URL with http + URL with www
-        Reader r1 = new Reader(TestFixtures.m13);
-        assert(r1.message.equals(TestFixtures.m13));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L13);
+        Reader r = new Reader(TestFixtures.m13);
+        assert (r.message.equals(TestFixtures.m13));
+        Assert.assertArrayEquals(r.list, TestFixtures.L13);
+    }
 
+    @Test
+    public void badURLOneTopic() {
         //1 topic + bad URL
-        Reader r2 = new Reader(TestFixtures.m14);
-        assert(r2.message.equals(TestFixtures.m14));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L14);
+        Reader r = new Reader(TestFixtures.m14);
+        assert (r.message.equals(TestFixtures.m14));
+        Assert.assertArrayEquals(r.list, TestFixtures.L14);
+    }
 
+    @Test
+    public void oneURLOneMentionOneTopic() {
         //1 mention + 1 topic + 1 URL
-        Reader r3 = new Reader(TestFixtures.m15);
-        assert(r3.message.equals(TestFixtures.m15));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L15);
+        Reader r = new Reader(TestFixtures.m15);
+        assert(r.message.equals(TestFixtures.m15));
+        Assert.assertArrayEquals(r.list, TestFixtures.L15);
     }
 
     @Test
-    public void shortenedURLs() {
+    public void oneShortenedURLOneMention() {
         //1 mention + 1 shortened URL
-        Reader r1 = new Reader(TestFixtures.m16);
-        assert(r1.message.equals(TestFixtures.m16));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L16);
-
-        //1 topic + 3 shortened URLs
-        Reader r2 = new Reader(TestFixtures.m17);
-        assert(r2.message.equals(TestFixtures.m17));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L17);
+        Reader r = new Reader(TestFixtures.m16);
+        assert (r.message.equals(TestFixtures.m16));
+        Assert.assertArrayEquals(r.list, TestFixtures.L16);
     }
 
     @Test
-    public void badTagsMentions() {
+    public void manyShortenedURLsOneTopic() {
+        //1 topic + 3 shortened URLs
+        Reader r = new Reader(TestFixtures.m17);
+        assert(r.message.equals(TestFixtures.m17));
+        Assert.assertArrayEquals(r.list, TestFixtures.L17);
+    }
+
+    @Test
+    public void twoShortenedTagsOneMention() {
         //2 shortened tags + 1 mention
-        Reader r1 = new Reader(TestFixtures.m18);
-        assert(r1.message.equals(TestFixtures.m18));
-        Assert.assertArrayEquals(r1.list, TestFixtures.L18);
+        Reader r = new Reader(TestFixtures.m18);
+        assert (r.message.equals(TestFixtures.m18));
+        Assert.assertArrayEquals(r.list, TestFixtures.L18);
+    }
 
+    @Test
+    public void longTagInvalidMention() {
         //long tag + invalid mention
-        Reader r2 = new Reader(TestFixtures.m19);
-        assert(r2.message.equals(TestFixtures.m19));
-        Assert.assertArrayEquals(r2.list, TestFixtures.L19);
+        Reader r = new Reader(TestFixtures.m19);
+        assert (r.message.equals(TestFixtures.m19));
+        Assert.assertArrayEquals(r.list, TestFixtures.L19);
+    }
 
+    @Test
+    public void invalidMentionShortenedTagURL() {
         //URL + invalid mention + shortened tag
-        Reader r3 = new Reader(TestFixtures.m20);
-        assert(r3.message.equals(TestFixtures.m20));
-        Assert.assertArrayEquals(r3.list, TestFixtures.L20);
+        Reader r = new Reader(TestFixtures.m20);
+        assert(r.message.equals(TestFixtures.m20));
+        Assert.assertArrayEquals(r.list, TestFixtures.L20);
     }
 }
