@@ -1,6 +1,7 @@
 package tester;
 
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 import twitter.*;
 import static org.junit.Assert.*;
 
@@ -14,194 +15,239 @@ public class ParserTest {
     @Test
     public void emptyParse() {
         //empty message
-        Parser p1 = new Parser(TestFixtures.L0);
-        assert(p1.parsedMap.isEmpty());
+        Parser p = new Parser(TestFixtures.L0);
+        assert (p.parsedMap.isEmpty());
+    }
 
-        //message with only spaces
-        Parser p2 = new Parser(TestFixtures.L00);
-        assert(p2.parsedMap.isEmpty());
+    @Test
+    public void emptySpaceParse() {
+        //message with only a space
+        Parser p = new Parser(TestFixtures.L00);
+        assert (p.parsedMap.isEmpty());
+    }
 
+    @Test
+    public void tooLongParse() {
         //message is too long
-        Parser p3 = new Parser(TestFixtures.L000);
-        assert(p3.parsedMap.isEmpty());
+        Parser p = new Parser(TestFixtures.L000);
+        assert(p.parsedMap.isEmpty());
     }
 
     @Test
     public void basicParse() {
         //basic message with no mentions/topics/URLs or punctuation
-        Parser p1 = new Parser(TestFixtures.L1);
-        assert(p1.parsedMap.get("mentions").size() == 0);
-        assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("urls").size() == 0);
+        Parser p = new Parser(TestFixtures.L1);
+        assert (p.parsedMap.get("mentions").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 0);
+    }
 
+    @Test
+    public void oneLetterBasicParse() {
         //basic message one letter
-        Parser p2 = new Parser(TestFixtures.L2);
-        assert(p2.parsedMap.get("mentions").size() == 0);
-        assert(p2.parsedMap.get("topics").size() == 0);
-        assert(p2.parsedMap.get("urls").size() == 0);
+        Parser p = new Parser(TestFixtures.L2);
+        assert (p.parsedMap.get("mentions").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 0);
+    }
 
+    @Test
+    public void basicPunctuationParse() {
         //basic message with no mentions/topics/URLs with punctuation
-        Parser p3 = new Parser(TestFixtures.L3);
-        assert(p3.parsedMap.get("mentions").size() == 0);
-        assert(p3.parsedMap.get("topics").size() == 0);
-        assert(p3.parsedMap.get("urls").size() == 0);
+        Parser p = new Parser(TestFixtures.L3);
+        assert(p.parsedMap.get("mentions").size() == 0);
+        assert(p.parsedMap.get("topics").size() == 0);
+        assert(p.parsedMap.get("urls").size() == 0);
     }
 
     @Test
-    public void basicMentions() {
+    public void twoBasicMentionsParse() {
         //message contains 2 mentions with punctuation
-        Parser p1 = new Parser(TestFixtures.L4);
-        assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("urls").size() == 0);
-        assert(p1.parsedMap.get("mentions").size() == 2);
-        assertTrue(p1.parsedMap.get("mentions").contains("John"));
-        assertTrue(p1.parsedMap.get("mentions").contains("Martha"));
+        Parser p = new Parser(TestFixtures.L4);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 2);
+        assertTrue(p.parsedMap.get("mentions").contains("John"));
+        assertTrue(p.parsedMap.get("mentions").contains("Martha"));
+    }
 
+    @Test
+    public void oneBasicMentionParse() {
         //message only contains mention
-        Parser p2 = new Parser(TestFixtures.L5);
-        assert(p2.parsedMap.get("topics").size() == 0);
-        assert(p2.parsedMap.get("urls").size() == 0);
-        assert(p2.parsedMap.get("mentions").size() == 1);
-        assertTrue(p2.parsedMap.get("mentions").contains("john"));
+        Parser p = new Parser(TestFixtures.L5);
+        assert(p.parsedMap.get("topics").size() == 0);
+        assert(p.parsedMap.get("urls").size() == 0);
+        assert(p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("john"));
     }
 
     @Test
-    public void emptyMentions() {
+    public void emptyMentionParse() {
         //message is only @ symbol
-        Parser p1 = new Parser(TestFixtures.L6);
-        assert(p1.parsedMap.get("mentions").size() == 0);
-        assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("urls").size() == 0);
+        Parser p = new Parser(TestFixtures.L6);
+        assert (p.parsedMap.get("mentions").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 0);
+    }
 
+    @Test
+    public void mentionDotParse() {
         //message is @ symbol followed by dot
-        Parser p2 = new Parser(TestFixtures.L7);
-        assert(p2.parsedMap.get("topics").size() == 0);
-        assert(p2.parsedMap.get("urls").size() == 0);
-        assert(p2.parsedMap.get("mentions").size() == 0);
+        Parser p = new Parser(TestFixtures.L7);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 0);
+    }
 
+    @Test
+    public void mentionTopicSymbolsParse() {
         //message is @ symbol followed by # symbol
-        Parser p3 = new Parser(TestFixtures.L8);
-        assert(p3.parsedMap.get("topics").size() == 0);
-        assert(p3.parsedMap.get("urls").size() == 0);
-        assert(p3.parsedMap.get("mentions").size() == 0);
+        Parser p = new Parser(TestFixtures.L8);
+        assert(p.parsedMap.get("topics").size() == 0);
+        assert(p.parsedMap.get("urls").size() == 0);
+        assert(p.parsedMap.get("mentions").size() == 0);
     }
 
     @Test
-    public void mentionsTopicsCombo() {
+    public void oneMentionOneTopicParse() {
         //1 mention + 1 topic with punctuation
-        Parser p1 = new Parser(TestFixtures.L9);
-        assert(p1.parsedMap.get("urls").size() == 0);
-        assert(p1.parsedMap.get("mentions").size() == 1);
-        assertTrue(p1.parsedMap.get("mentions").contains("you"));
-        assert(p1.parsedMap.get("topics").size() == 1);
-        assertTrue(p1.parsedMap.get("topics").contains("tagged"));
+        Parser p = new Parser(TestFixtures.L9);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("you"));
+        assert (p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("tagged"));
+    }
 
+    @Test
+    public void oneMentionTwoTopicsParse() {
         //1 mention + 2 topics with punctuation
-        Parser p2 = new Parser(TestFixtures.L10);
-        assert(p2.parsedMap.get("urls").size() == 0);
-        assert(p2.parsedMap.get("mentions").size() == 1);
-        assertTrue(p2.parsedMap.get("mentions").contains("John"));
-        assert(p2.parsedMap.get("topics").size() == 2);
-        assertTrue(p2.parsedMap.get("topics").contains("Google"));
-        assertTrue(p2.parsedMap.get("topics").contains("cool"));
+        Parser p = new Parser(TestFixtures.L10);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("John"));
+        assert (p.parsedMap.get("topics").size() == 2);
+        assertTrue(p.parsedMap.get("topics").contains("Google"));
+        assertTrue(p.parsedMap.get("topics").contains("cool"));
+    }
 
+    @Test
+    public void twoMentionsOneTopicParse() {
         //2 mentions + 1 topic
-        Parser p3 = new Parser(TestFixtures.L11);
-        assert(p3.parsedMap.get("urls").size() == 0);
-        assert(p3.parsedMap.get("mentions").size() == 2);
-        assertTrue(p3.parsedMap.get("mentions").contains("John"));
-        assertTrue(p3.parsedMap.get("mentions").contains("Billy"));
-        assert(p3.parsedMap.get("topics").size() == 1);
-        assertTrue(p3.parsedMap.get("topics").contains("cooler"));
+        Parser p = new Parser(TestFixtures.L11);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 2);
+        assertTrue(p.parsedMap.get("mentions").contains("John"));
+        assertTrue(p.parsedMap.get("mentions").contains("Billy"));
+        assert (p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("cooler"));
+    }
 
+    @Test
+    public void oneMentionManyTopicsParse() {
         //1 mention + 6 topics
-        Parser p4 = new Parser(TestFixtures.L12);
-        assert(p4.parsedMap.get("urls").size() == 0);
-        assert(p4.parsedMap.get("mentions").size() == 1);
-        assertTrue(p4.parsedMap.get("mentions").contains("here"));
-        assert(p4.parsedMap.get("topics").size() == 6);
-        assertTrue(p4.parsedMap.get("topics").contains("there"));
-        assertTrue(p4.parsedMap.get("topics").contains("are"));
-        assertTrue(p4.parsedMap.get("topics").contains("a"));
-        assertTrue(p4.parsedMap.get("topics").contains("lot"));
-        assertTrue(p4.parsedMap.get("topics").contains("of"));
-        assertTrue(p4.parsedMap.get("topics").contains("tags"));
+        Parser p = new Parser(TestFixtures.L12);
+        assert(p.parsedMap.get("urls").size() == 0);
+        assert(p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("here"));
+        assert(p.parsedMap.get("topics").size() == 6);
+        assertTrue(p.parsedMap.get("topics").contains("there"));
+        assertTrue(p.parsedMap.get("topics").contains("are"));
+        assertTrue(p.parsedMap.get("topics").contains("a"));
+        assertTrue(p.parsedMap.get("topics").contains("lot"));
+        assertTrue(p.parsedMap.get("topics").contains("of"));
+        assertTrue(p.parsedMap.get("topics").contains("tags"));
     }
 
     @Test
-    public void basicURLs() {
+    public void basicHttpWwwURLsParse() {
         //URL with http + URL with www
-        Parser p1 = new Parser(TestFixtures.L13);
-        assert(p1.parsedMap.get("mentions").size() == 0);
-        assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("urls").size() == 2);
-        assertTrue(p1.parsedMap.get("urls").contains("http://www.google.com"));
-        assertTrue(p1.parsedMap.get("urls").contains("www.google.com"));
+        Parser p = new Parser(TestFixtures.L13);
+        assert (p.parsedMap.get("mentions").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("urls").size() == 2);
+        assertTrue(p.parsedMap.get("urls").contains("http://www.google.com"));
+        assertTrue(p.parsedMap.get("urls").contains("www.google.com"));
+    }
 
+    @Test
+    public void badURLOneTopicParse() {
         //1 topic + bad URL
-        Parser p2 = new Parser(TestFixtures.L14);
-        assert(p2.parsedMap.get("mentions").size() == 0);
+        Parser p = new Parser(TestFixtures.L14);
+        assert (p.parsedMap.get("mentions").size() == 0);
         //TODO fix URL with correct syntax, but website doesn't exist
-        //assert(p2.parsedMap.get("urls").size() == 0);
-        assert(p2.parsedMap.get("topics").size() == 1);
-        assertTrue(p2.parsedMap.get("topics").contains("favorite"));
+        //assert(p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("favorite"));
+    }
 
+    @Test
+    public void oneURLOneMentionOneTopicParse() {
         //1 mention + 1 topic + 1 URL
-        Parser p3 = new Parser(TestFixtures.L15);
-        assert(p3.parsedMap.get("mentions").size() == 1);
-        assertTrue(p3.parsedMap.get("mentions").contains("Billy"));
-        assert(p3.parsedMap.get("topics").size() == 1);
-        assertTrue(p3.parsedMap.get("topics").contains("loves"));
-        assert(p3.parsedMap.get("urls").size() == 1);
-        assertTrue(p3.parsedMap.get("urls").contains("www.google.com"));
+        Parser p = new Parser(TestFixtures.L15);
+        assert(p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("Billy"));
+        assert(p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("loves"));
+        assert(p.parsedMap.get("urls").size() == 1);
+        assertTrue(p.parsedMap.get("urls").contains("www.google.com"));
     }
 
     @Test
-    public void shortenedURLs() {
+    public void oneShortenedURLOneMentionParse() {
         //1 mention + 1 shortened URL
-        Parser p1 = new Parser(TestFixtures.L16);
-        assert(p1.parsedMap.get("topics").size() == 0);
-        assert(p1.parsedMap.get("mentions").size() == 1);
-        assertTrue(p1.parsedMap.get("mentions").contains("Twitter"));
-        assert(p1.parsedMap.get("urls").size() == 1);
-        assertTrue(p1.parsedMap.get("urls").contains("t.co"));
-
-        //1 topic + 3 shortened URLs
-        Parser p2 = new Parser(TestFixtures.L17);
-        assert(p2.parsedMap.get("mentions").size() == 0);
-        assert(p2.parsedMap.get("topics").size() == 1);
-        assertTrue(p2.parsedMap.get("topics").contains("services"));
-        assert(p2.parsedMap.get("urls").size() == 3);
-        assertTrue(p2.parsedMap.get("urls").contains("bit.ly"));
-        assertTrue(p2.parsedMap.get("urls").contains("goo.gl"));
-        assertTrue(p2.parsedMap.get("urls").contains("ow.ly"));
+        Parser p = new Parser(TestFixtures.L16);
+        assert (p.parsedMap.get("topics").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("Twitter"));
+        assert (p.parsedMap.get("urls").size() == 1);
+        assertTrue(p.parsedMap.get("urls").contains("t.co"));
     }
 
     @Test
-    public void badTagsMentions() {
+    public void manyShortenedURLsOneTopicParse() {
+        //1 topic + 3 shortened URLs
+        Parser p = new Parser(TestFixtures.L17);
+        assert(p.parsedMap.get("mentions").size() == 0);
+        assert(p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("services"));
+        assert(p.parsedMap.get("urls").size() == 3);
+        assertTrue(p.parsedMap.get("urls").contains("bit.ly"));
+        assertTrue(p.parsedMap.get("urls").contains("goo.gl"));
+        assertTrue(p.parsedMap.get("urls").contains("ow.ly"));
+    }
+
+    @Test
+    public void twoShortenedTagsOneMentionParse() {
         //2 shortened tags + 1 mention
-        Parser p1 = new Parser(TestFixtures.L18);
-        assert(p1.parsedMap.get("urls").size() == 0);
-        assert(p1.parsedMap.get("mentions").size() == 1);
-        assertTrue(p1.parsedMap.get("mentions").contains("Billy"));
-        assert(p1.parsedMap.get("topics").size() == 2);
-        assertTrue(p1.parsedMap.get("topics").contains("this"));
-        assertTrue(p1.parsedMap.get("topics").contains("so"));
+        Parser p = new Parser(TestFixtures.L18);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 1);
+        assertTrue(p.parsedMap.get("mentions").contains("Billy"));
+        assert (p.parsedMap.get("topics").size() == 2);
+        assertTrue(p.parsedMap.get("topics").contains("this"));
+        assertTrue(p.parsedMap.get("topics").contains("so"));
+    }
 
+    @Test
+    public void longTagInvalidMentionParse() {
         //long tag + invalid mention
-        Parser p2 = new Parser(TestFixtures.L19);
-        assert(p2.parsedMap.get("urls").size() == 0);
-        assert(p2.parsedMap.get("mentions").size() == 0);
-        assert(p2.parsedMap.get("topics").size() == 1);
-        assertTrue(p2.parsedMap.get("topics").contains("thatawkwardmomentwhen"));
+        Parser p = new Parser(TestFixtures.L19);
+        assert (p.parsedMap.get("urls").size() == 0);
+        assert (p.parsedMap.get("mentions").size() == 0);
+        assert (p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("thatawkwardmomentwhen"));
+    }
 
+    @Test
+    public void invalidMentionShortenedTagURLParse() {
         //URL + invalid mention + shortened tag
-        Parser p3 = new Parser(TestFixtures.L20);
-        assert(p3.parsedMap.get("mentions").size() == 0);
-        assert(p3.parsedMap.get("urls").size() == 1);
-        assertTrue(p3.parsedMap.get("urls").contains("google.com"));
-        assert(p3.parsedMap.get("topics").size() == 1);
-        assertTrue(p3.parsedMap.get("topics").contains("google"));
+        Parser p = new Parser(TestFixtures.L20);
+        assert(p.parsedMap.get("mentions").size() == 0);
+        assert(p.parsedMap.get("urls").size() == 1);
+        assertTrue(p.parsedMap.get("urls").contains("google.com"));
+        assert(p.parsedMap.get("topics").size() == 1);
+        assertTrue(p.parsedMap.get("topics").contains("google"));
     }
 
 }
