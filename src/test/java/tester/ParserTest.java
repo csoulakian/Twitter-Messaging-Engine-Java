@@ -1,7 +1,6 @@
 package tester;
 
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import twitter.*;
 import static org.junit.Assert.*;
 
