@@ -65,7 +65,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void twoBasicMentions() {
+    public void twoBasicMentionsRead() {
         //message contains 2 mentions with punctuation
         Reader r = new Reader(TestFixtures.m4);
         assert (r.message.equals(TestFixtures.m4));
@@ -73,7 +73,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneBasicMention() {
+    public void oneBasicMentionRead() {
         //message only contains one mention
         Reader r = new Reader(TestFixtures.m5);
         assert(r.message.equals(TestFixtures.m5));
@@ -81,7 +81,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void emptyMention() {
+    public void emptyMentionRead() {
         //message is only @ symbol
         Reader r = new Reader(TestFixtures.m6);
         assert (r.message.equals(TestFixtures.m6));
@@ -89,7 +89,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void mentionDot() {
+    public void mentionDotRead() {
         //message is @ symbol followed by dot
         Reader r = new Reader(TestFixtures.m7);
         assert (r.message.equals(TestFixtures.m7));
@@ -97,7 +97,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void mentionTopicSymbols() {
+    public void mentionTopicSymbolsRead() {
         //message is @ symbol followed by # symbol
         Reader r = new Reader(TestFixtures.m8);
         assert(r.message.equals(TestFixtures.m8));
@@ -105,7 +105,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneMentionOneTopic() {
+    public void oneMentionOneTopicRead() {
         //1 mention + 1 topic with punctuation
         Reader r = new Reader(TestFixtures.m9);
         assert (r.message.equals(TestFixtures.m9));
@@ -113,7 +113,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneMentionTwoTopics() {
+    public void oneMentionTwoTopicsRead() {
         //1 mention + 2 topics with punctuation
         Reader r = new Reader(TestFixtures.m10);
         assert (r.message.equals(TestFixtures.m10));
@@ -121,7 +121,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void twoMentionsOneTopic() {
+    public void twoMentionsOneTopicRead() {
         //2 mentions + 1 topic
         Reader r = new Reader(TestFixtures.m11);
         assert (r.message.equals(TestFixtures.m11));
@@ -129,7 +129,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneMentionManyTopics() {
+    public void oneMentionManyTopicsRead() {
         //1 mention + 6 topics
         Reader r = new Reader(TestFixtures.m12);
         assert(r.message.equals(TestFixtures.m12));
@@ -137,7 +137,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void basicHttpWwwURLs() {
+    public void basicHttpWwwURLsRead() {
         //URL with http + URL with www
         Reader r = new Reader(TestFixtures.m13);
         assert (r.message.equals(TestFixtures.m13));
@@ -145,7 +145,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void badURLOneTopic() {
+    public void badURLOneTopicRead() {
         //1 topic + bad URL
         Reader r = new Reader(TestFixtures.m14);
         assert (r.message.equals(TestFixtures.m14));
@@ -153,7 +153,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneURLOneMentionOneTopic() {
+    public void oneURLOneMentionOneTopicRead() {
         //1 mention + 1 topic + 1 URL
         Reader r = new Reader(TestFixtures.m15);
         assert(r.message.equals(TestFixtures.m15));
@@ -161,7 +161,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void oneShortenedURLOneMention() {
+    public void oneShortenedURLOneMentionRead() {
         //1 mention + 1 shortened URL
         Reader r = new Reader(TestFixtures.m16);
         assert (r.message.equals(TestFixtures.m16));
@@ -169,7 +169,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void manyShortenedURLsOneTopic() {
+    public void manyShortenedURLsOneTopicRead() {
         //1 topic + 3 shortened URLs
         Reader r = new Reader(TestFixtures.m17);
         assert(r.message.equals(TestFixtures.m17));
@@ -177,7 +177,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void twoShortenedTagsOneMention() {
+    public void twoShortenedTagsOneMentionRead() {
         //2 shortened tags + 1 mention
         Reader r = new Reader(TestFixtures.m18);
         assert (r.message.equals(TestFixtures.m18));
@@ -185,7 +185,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void longTagInvalidMention() {
+    public void longTagInvalidMentionRead() {
         //long tag + invalid mention
         Reader r = new Reader(TestFixtures.m19);
         assert (r.message.equals(TestFixtures.m19));
@@ -193,7 +193,7 @@ public class ReaderTest {
     }
 
     @Test
-    public void invalidMentionShortenedTagURL() {
+    public void invalidMentionShortenedTagURLRead() {
         //URL + invalid mention + shortened tag
         Reader r = new Reader(TestFixtures.m20);
         assert(r.message.equals(TestFixtures.m20));
