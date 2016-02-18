@@ -5,8 +5,10 @@ Created in IntelliJ IDEA 15.0.3
 Status: Looking pretty good! Always room for improvement though!
 
 This project was created to process sample Twitter-like messages that are strings with a maximum of 140 characters.
+The main method in twitter-msg-engine/src/main/java/twitter/Main scans user input and prints the resulting parsed map
+displaying the mentions, topics, and URLs found in the message.
 
-A new Reader class is created using a sample tweet where it checks the length of the message and,
+A new Reader class is created using the user's input message where it checks the length of the message and,
 if it is not too long or empty, separates the message into individual words or items separated by a space.
 All of the items are added to a string array which is passed into the Parser class. 
 
@@ -31,7 +33,7 @@ Once the sorter has finished placing a word (or not placing one if it doesn't me
 pairs are added to a HashMap: "mentions" and the mentions array list, "topics" and the topics array list, and "URLs"
 and the URLs array list.
 
-The functionality of the program can be seen in the ReaderTest, which makes sure the original string is
+The functionality of the program can also be seen in the ReaderTest, which makes sure the original string is
 correctly separated into words, and the ParserTest, which makes sure the parsed HashMap sorts the words correctly.
 
 ## To run using Java ##
