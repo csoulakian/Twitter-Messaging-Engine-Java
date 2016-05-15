@@ -174,8 +174,7 @@ public class ParserTest {
         //1 topic + bad URL
         Parser p = new Parser(TestFixtures.L14);
         assert (p.parsedMap.get("mentions").size() == 0);
-        //TODO fix URL with correct syntax, but website doesn't exist
-        //assert(p.parsedMap.get("urls").size() == 0);
+        assert(p.parsedMap.get("urls").size() == 0);
         assert (p.parsedMap.get("topics").size() == 1);
         assertTrue(p.parsedMap.get("topics").contains("favorite"));
     }

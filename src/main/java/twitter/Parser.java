@@ -1,6 +1,7 @@
 package twitter;
-import java.net.URI;
-import java.net.URISyntaxException;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -120,16 +121,23 @@ public class Parser {
     /**
      * Checks if a word that doesn't start with @ or # and has a dot
      * somewhere in the middle of the word is a valid URL.
+     * Idea from http://stackoverflow.com/questions/10551813/check-if-url-is-valid-or-exists-in-java
      * @param url input string that is a potentially valid URL
      * @return true if the URL is valid, otherwise false
      */
     private boolean verifyURL(String url) {
+        HttpURLConnection connection = null;
         try {
-            new URI(url);
-            return true;
-        } catch (URISyntaxException e) {
+            URL mUrl = new URL(url);
+            connection = (HttpURLConnection) mUrl.openConnection();
+            connection.setRequestMethod("HEAD");
+            int code = connection.getResponseCode();
+            System.out.println("" + code);
+        } catch (Exception e) {
+            System.out.println("Invalid URL");
             return false;
         }
+        return true;
     }
 
 }
