@@ -1,7 +1,7 @@
 package twitter;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.google.common.net.InternetDomainName;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -119,18 +119,15 @@ public class Parser {
     }
 
     /**
-     * Checks if a word that doesn't start with @ or # and has a dot
-     * somewhere in the middle of the word is a valid URL.
+     * First removes the http://www. from beginning of string, then
+     * uses Google's Guava to check if a word that doesn't start with
+     * @ or # and has a dot somewhere in the middle of the word is a valid URL.
      * @param url input string that is a potentially valid URL
      * @return true if the URL is valid, otherwise false
      */
     private boolean verifyURL(String url) {
-        try {
-            new URI(url);
-            return true;
-        } catch (URISyntaxException e) {
-            return false;
-        }
+        url = url.replaceFirst("^(http://www\\.|http://|www\\.)","");
+        return InternetDomainName.isValid(url);
     }
 
 }
